@@ -150,7 +150,7 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`mws-restaurant-stage-1-master/img/${restaurant.photograph}`);
+    return (`img/${restaurant.photograph}`);
   }
 
   /**
@@ -167,4 +167,16 @@ class DBHelper {
     return marker;
   }
 
+}
+
+/** serviceworker test */
+var workerContainerInstance = navigator.serviceWorker;
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    location.protocol === 'https:' && navigator.serviceWorker && navigator.serviceWorker.register('serviceworker.js').then(function (registration) {
+      console.log('ServiceWorker  successful: ', registration.scope);
+    }, function (err) {
+      console.log('ServiceWorker failed: ', err);
+    });
+  });
 }
