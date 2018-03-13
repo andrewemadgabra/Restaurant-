@@ -8,8 +8,8 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8080 // Change this to your server port
-   return `http://192.168.1.109:${port}/mws-restaurant-stage-1-master/data/restaurants.json`;
+    const port = 3000 // Change this to your server port
+    return `http://localhost:${port}/data/restaurants.json`;
   }
 
   /**
@@ -150,7 +150,7 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`img/${restaurant.photograph}`);
+    return (`/img/${restaurant.photograph}`);
   }
 
   /**
@@ -167,16 +167,4 @@ class DBHelper {
     return marker;
   }
 
-}
-
-/** serviceworker test */
-var workerContainerInstance = navigator.serviceWorker;
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    location.protocol === 'https:' && navigator.serviceWorker && navigator.serviceWorker.register('serviceworker.js').then(function (registration) {
-      console.log('ServiceWorker  successful: ', registration.scope);
-    }, function (err) {
-      console.log('ServiceWorker failed: ', err);
-    });
-  });
 }

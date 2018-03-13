@@ -139,12 +139,21 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
+    image.setAttribute("alt","some people eating on window inside resturant!!");
+    image.setAttribute("alt","The pizza from restaurant ");
+    image.setAttribute("alt","Restaurant lounge");
+    image.setAttribute("alt","restaurant Katz`s");
+    image.setAttribute("alt","stuff that work on this resturant!!");
+    image.setAttribute("alt","some People are waiting of order restaurant");
+    image.setAttribute("alt","Superiority burger Restaurant");
+    image.setAttribute("alt","The Dutch Resturant");
+    image.setAttribute("alt","People communicate when eating");
+    image.setAttribute("alt","one hall inside a restaurant");
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = restaurant.name + 'resturant image';
   li.append(image);
 
-  const name = document.createElement('h2');
+  const name = document.createElement('h4');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -175,17 +184,5 @@ addMarkersToMap = (restaurants = self.restaurants) => {
       window.location.href = marker.url
     });
     self.markers.push(marker);
-  });
-}
-
-/**Serviceworker test */
-var workerContainerInstance = navigator.serviceWorker;
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    location.protocol === 'https:' && workerContainerInstance.register('serviceworker.js').then(function (registration) {
-      console.log('ServiceWorker  successful: ', registration.scope);
-    }, function (err) {
-      console.log('ServiceWorker failed: ', err);
-    });
   });
 }
